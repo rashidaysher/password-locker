@@ -14,13 +14,13 @@ def newuser(uname, pword):
     Function to create a new user
     '''  
     new_user = User(uname, pword) 
-    new_user.newuser()
+    new_user.signup_user()
 
 def save_account(credentials):
     '''
     Function to save  a new account
     '''  
-    credentials.save_credentials()
+    credentials.save_credential()
 
 def generate_password():
     '''
@@ -44,10 +44,11 @@ def main():
     print("Kindly register with us to enjoy our service")
     print("Please input username")
     username = input()
-    print ("Hello {username}. input password:")
+    print (f"Hello {username}. Thank you for choosing passlock. input password to continue:")
     print('\n')
     password = input()
     print('\n')
+    print ("*"*70)
 
     newuser(username,password)
 
@@ -59,9 +60,9 @@ def main():
 
         if chosen_word == 'create':
             print("Add a new account")
-            print("i"*8)
+            print("_"*8)
 
-            print("Enter account name:") 
+            print("Enter account name or application name:") 
             account = input()
 
             print("Input the username or login")
@@ -80,11 +81,14 @@ def main():
                     print("\n")
                     print("Choose a password::")
                     password = input()
+                    print("*"*70)
 
                     break
                 else:
                     print("\n")
                     print("Password required. Try again.")
+                    print (f"Hello {username}, your account has been created successfully")
+                    print("*"*70)
 
 
             save_account(create_account(account, login, password, username))  
@@ -97,7 +101,8 @@ def main():
 
             for user in User.user_list:
                 if user.username == uname:
-                    if display_details():
+                    if user.password == pword:
+                       if display_details():
                         print("Below are the list of all your accounts")
                         print ("\n")
 
@@ -119,7 +124,7 @@ def main():
 
             if find_account(accname):
                     found_account = find_account(accname) 
-                    print("i"*8)
+                    print("_"*8)
                     print(f"Acconut {found_account.account}")
                     print(f"Login {found_account.login}")
                     print(f"Password {found_account.password}")
