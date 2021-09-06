@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from credentials import Credentials
 from user import User
+from termcolor import colored
 
 def create_account(account, login, password, user):
     '''
@@ -42,40 +43,41 @@ def find_account(account):
 
 def main():
     print("Kindly register with us to enjoy our service")
-    print("Please input username")
+    print(colored("Please input username", "yellow"))
     username = input()
-    print (f"Hello {username}. Thank you for choosing passlock. input password to continue:")
+    print (f"Hello {username}. Thank you for choosing passlock. input"), print (colored("password to continue:", "yellow"))
     print('\n')
     password = input()
-    print('\n')
-    print ("*"*70)
+    print(colored('\n', 'yellow'))
+    print ("*"*70, )
 
     newuser(username,password)
 
     while True:
         print ('\n')
-        print("Use the words: create - create a new account, display - display every account, find - find account, exit - exit passlock")
+        print (colored ("Use the words: create - create a new account, display - display every account, find - find account, exit - exit passlock", "blue"))
 
         chosen_word = input().lower()
 
         if chosen_word == 'create':
-            print("Add a new account")
+            print(colored("Add a new account", "yellow"))
             print("_"*8)
 
-            print("Enter account name or application name:") 
+            print(colored("Enter account name or application name:", "yellow") )
             account = input()
 
-            print("Input the username or login")
+            print(colored("Input the username or login", "yellow"))
             login = input()
 
             while True:
-                print("Generate password? (y/n)")
+                print(colored("Generate password? (y/n)", "crimson"))
                 answer= input().lower()
 
                 if answer == "y":
                     password = generate_password()
 
-                    print(f"Your new password is {password}")
+                    print(colored(f"Your new password is {password}", "blue"))
+                    print("your account credentials has been successfully created and saved")
                     break
                 elif answer == "n":
                     print("\n")
