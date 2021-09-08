@@ -96,9 +96,9 @@ def main():
 
             save_account(create_account(account, login, password, username))  
         elif chosen_word == "display":
-            print ("Input user name")
+            print (colored("Input user name", "yellow"))
             uname = input() 
-            print ("Input password")
+            print (colored("Input password", "yellow"))
             pword = input()  
 
 
@@ -106,14 +106,14 @@ def main():
                 if user.username == uname:
                     if user.password == pword:
                        if display_credentials():
-                        print("Below are the list of all your accounts")
+                        print(colored("Below are the list of all your accounts", "green"))
                         print ("\n")
 
                         for account in display_credentials():
-                           print("i"*8)
-                           print(f"Acconut: {account.account}")
-                           print(f"Login: {account.login}")
-                           print(f"Passsword: {account.password}")
+                           print("*"*50)
+                           print(colored(f"Acconut: {account.account}", "crimson"))
+                           print(colored(f"Login: {account.login}", "crimson"))
+                           print(colored(f"Passsword: {account.password}","crimson"))
                     else:
                       print("\n")
                       print("You seem to have no saved accounts yet")
