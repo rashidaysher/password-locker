@@ -111,9 +111,9 @@ def main():
 
                         for account in display_credentials():
                            print("*"*50)
-                           print(colored(f"Acconut: {account.account}", "crimson"))
-                           print(colored(f"Login: {account.login}", "crimson"))
-                           print(colored(f"Passsword: {account.password}","crimson"))
+                           print(colored(f"Acconut: {account.account}", "red"))
+                           print(colored(f"Login: {account.login}", "red"))
+                           print(colored(f"Passsword: {account.password}","red"))
                     else:
                       print("\n")
                       print("You seem to have no saved accounts yet")
@@ -132,7 +132,7 @@ def main():
                     print(f"Login {found_account.login}")
                     print(f"Password {found_account.password}")
 
-        elif chosen_word == "exist":
+        elif chosen_word == "exit":
             print("\n")
             print("Thank you for choosing passlock.")
             break
