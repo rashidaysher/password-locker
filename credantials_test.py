@@ -66,11 +66,12 @@ class TestCredentials(unittest.TestCase):
     #     self.assertEqual(len(Credentials.credentials_list),2)
 
       
-    def test_display_every_credential(self): 
+    def test_display_all_credential(self): 
       '''
-        delete_account method deletes a saved account from the credential_list
+        methos that returns a list of all credentials saved
       ''' 
       self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)
+      
 
     def test_find_account(self):
       '''

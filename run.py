@@ -29,7 +29,7 @@ def generate_password():
     ''' 
     return Credentials.get_random_password()
 
-def display_details():
+def display_credentials():
     '''
     Function to display new credential details
     ''' 
@@ -49,6 +49,7 @@ def main():
     print('\n')
     password = input()
     print(colored('\n', 'yellow'))
+    print(colored("YOU HAVE SUCCESSFULLY REGISTERED TO PASS-LOCK", "green"))
     print ("*"*70, )
 
     newuser(username,password)
@@ -70,13 +71,13 @@ def main():
             login = input()
 
             while True:
-                print(colored("Generate password? (y/n)", "crimson"))
+                print("Generate password? (y/n)",)
                 answer= input().lower()
 
                 if answer == "y":
                     password = generate_password()
 
-                    print(colored(f"Your new password is {password}", "blue"))
+                    print(colored(f"Your new password is {password}", "green"))
                     print("your account credentials has been successfully created and saved")
                     break
                 elif answer == "n":
@@ -104,11 +105,11 @@ def main():
             for user in User.user_list:
                 if user.username == uname:
                     if user.password == pword:
-                       if display_details():
+                       if display_credentials():
                         print("Below are the list of all your accounts")
                         print ("\n")
 
-                        for account in display_details():
+                        for account in display_credentials():
                            print("i"*8)
                            print(f"Acconut: {account.account}")
                            print(f"Login: {account.login}")
