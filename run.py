@@ -1,7 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.8
 from credentials import Credentials
 from user import User
 from termcolor import colored
+# import pyperclip
 
 def create_account(account, login, password, user):
     '''
@@ -35,28 +36,37 @@ def display_credentials():
     ''' 
     return Credentials.display_credentials()
 
+def delete_credential(credentials):
+    """
+    Function to delete a credential
+
+    """
+    credentials.delete_credentials()
+
+
 def find_account(account):
     '''
     Function to find account
     '''  
     return Credentials.find_by_account(account) 
 
+
 def main():
     print("Kindly register with us to enjoy our service")
     print(colored("Please input username", "yellow"))
     username = input()
-    print (f"Hello {username}. Thank you for choosing passlock. input"), print (colored("password to continue:", "yellow"))
+    print (colored(f"Hello {username}. Thank you for choosing passlock. input","green"), colored("password to continue:", "yellow"))
     print('\n')
     password = input()
     print(colored('\n', 'yellow'))
     print(colored("YOU HAVE SUCCESSFULLY REGISTERED TO PASS-LOCK", "green"))
-    print ("*"*70, )
+    print ("*"*100, )
 
     newuser(username,password)
 
     while True:
         print ('\n')
-        print (colored ("Use the words: create - create a new account, display - display every account, find - find account, exit - exit passlock", "blue"))
+        print (colored ("Use the words: \n create- create a new account, \n display - display every account, \n find - find account, \n dele - delete accounts, \n exit - exit passlock", "blue"))
 
         chosen_word = input().lower()
 
@@ -132,9 +142,26 @@ def main():
                     print(f"Login {found_account.login}")
                     print(f"Password {found_account.password}")
 
+
+        elif chosen_word == "dele":
+            print("Enter the account name of the Credentials you want to delete")
+            accname = input().lower()
+            if find_account(accname):
+                found_account = find_account(accname)
+                print("_"*50)
+                found_account.delete_credentials()
+                print('\n')
+                print(colored(f"Your stored credentials for : {found_account.account} has been deleted successfully!!!", "green"))
+                print('\n')
+            else:
+                print("That Credential you want to delete does not exist in your store yet")  
+
+
+            # ~         
+
         elif chosen_word == "exit":
             print("\n")
-            print("Thank you for choosing passlock.")
+            print(colored("Come again and Thank you for choosing passlock.", "green"))
             break
         else:
             print("\n")
